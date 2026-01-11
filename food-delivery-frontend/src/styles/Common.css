@@ -1,0 +1,168 @@
+.hero-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px;
+  overflow: hidden;
+  color: rgb(243, 239, 239);
+}
+.hero-container, .arrow, .title, .top-right-curve {
+  transition: all 0.6s ease;
+}
+
+
+/* HALF CIRCLE BACKGROUND */
+.half-circle {
+  position: absolute;
+  right: -200px;
+  top: -200px;
+  width: 700px;
+  height: 700px;
+  background: #d16ba5;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* LEFT TEXT */
+.hero-text {
+  width: 40%;
+  z-index: 2;
+}
+
+.title {
+  font-size: 72px;
+  color: #ff4d6d;
+}
+
+.hero-text h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  max-width: 420px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* IMAGE AREA */
+.hero-images {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* ORBIT */
+.image-orbit {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+/* MAIN IMAGE */
+.main-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  margin: 35px;
+}
+
+/* SMALL IMAGES */
+.orbit-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  /* object-fit: cover; */
+  position: absolute;
+  top: 40%;
+  left: 52%;
+  transform-origin: center;
+  margin: -20px;
+}
+
+/* ROTATION ANIMATION */
+.spin {
+  animation: rotateOrbit 0.6s ease;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;        /* size of the circle */
+  height: 50px;       /* size of the circle */
+  border-radius: 50%; /* makes it circular */
+  background: rgba(211, 118, 4, 0.9);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.arrow:hover {
+  background: #ff6347; /* tomato color on hover */
+  color: white;         /* arrow color change */
+  transform: translateY(-50%) scale(1.2); /* subtle zoom on hover */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.top-right-curve {
+  position: absolute;
+  top: -500px;       /* push it outside the top */
+  right: -10px;     /* push it outside the right */
+  width: 1000px;      /* size of the half-circle */
+  height: 1000px;     /* same as width for perfect circle */
+  background: linear-gradient(to bottom,#ee95cd,#ee95cd, black);  /* curve color */
+  border-radius: 50%; /* makes it a circle */
+}
+.arrow-wrapper.bottom {
+  margin-top: 20px; /* distance below the image-orbit */
+}
+.arrow-wrapper.top {
+  margin-bottom: 20px; /* distance from top of image-orbit */
+}
+.arrow-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 50px; /* space between two arrows */
+  margin: 20px auto; /* center horizontally */
+}
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg) translate(170px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(170px) rotate(-360deg);
+  }
+}
+
+@keyframes rotateFirst {
+  0% {
+    transform: rotate(0deg) translate(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg) translate(80px) rotate(-90deg);
+  }
+}
+
+@keyframes rotateFourth {
+  0% {
+    transform: rotate(270deg) translate(170px) rotate(-270deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(170px) rotate(-360deg);
+  }
+}
