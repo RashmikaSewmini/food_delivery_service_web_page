@@ -27,3 +27,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+const subscriberRoutes = require("./routes/subscriberRoutes");
+app.use("/api/subscribe", subscriberRoutes);
+
+const orderRoutes = require("./routes/orderRoutes");
+app.use("/api/orders", orderRoutes);
+
+const contactRoutes = require("./routes/contactRoutes");
+app.use("/api/contact", contactRoutes);

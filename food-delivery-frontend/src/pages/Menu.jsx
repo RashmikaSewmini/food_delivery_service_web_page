@@ -9,6 +9,8 @@ import Pizza from "../assets/pizza.jpg";
 import cake from "../assets/chesse.jpg";
 import pancake from "../assets/berry.jpg";
 import mango from "../assets/mango.jpg";
+import axios from "axios";
+
 
 const menuItems = [
   {
@@ -60,7 +62,7 @@ const menuItems = [
     img: pancake,
   },
   {
-    id: 5,
+    id: 7,
     name: "cheese cake",
     description: "Served with lorem ipsum",
     price: 1200,
@@ -68,7 +70,7 @@ const menuItems = [
     img: cake,
   },
   {
-    id: 6,
+    id: 9,
     name: "Chiken Pizza",
     description: "Served with lorem ipsum Dolor sit amet",
     price: 4999,
@@ -93,6 +95,37 @@ function Menu() {
   const handleRemove = (id) => {
     setCart({ ...cart, [id]: Math.max(cart[id] - 1, 0) });
   };
+
+  const handlePlaceOrder = async () => {
+    const orderItems = menuItems
+      .filter((item) => cart[item.id] > 0)
+      .map((item) => ({
+        name: item.name,
+        price: item.price,
+        quantity: cart[item.id],
+      }));
+
+    if (orderItems.length === 0) {
+      alert("Please add items to cart!");
+      return;
+    }
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/orders", {
+        items: orderItems,
+        total: orderItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        ),
+      });
+
+      alert("Order placed successfully");
+      setCart({});
+    } catch (error) {
+      alert("Order failed");
+    }
+  };
+
 
   return (
     <div className="menu-page">
@@ -139,6 +172,23 @@ function Menu() {
           );
         })}
       </div>
+      <div className="order-summary">
+        <h2>Order Summary</h2>
+        <ul>
+          {menuItems.map((item) =>
+            cart[item.id] > 0 ? (
+              <li key={item.id}>
+                {item.name} x {cart[item.id]}
+              </li>
+            ) : null
+          )}
+        </ul>
+
+        <button className="place-order-btn" onClick={handlePlaceOrder}>
+          Place Order
+        </button>
+      </div>
+
     </div>
   );
 }

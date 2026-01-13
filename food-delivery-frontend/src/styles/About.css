@@ -1,0 +1,47 @@
+.about-page {
+  min-height: 100vh;
+  padding: 60px 80px;
+  background: linear-gradient(to bottom, #faefd3, #907344, #080c0e);
+  color: white;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 50px;
+  color: orange;
+}
+
+.about-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 280px;
+  min-height: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-card h2 {
+  color: rgb(22, 21, 19);
+  margin-bottom: 15px;
+}
+
+.about-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.about-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}

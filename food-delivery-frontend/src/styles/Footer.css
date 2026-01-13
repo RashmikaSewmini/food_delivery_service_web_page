@@ -130,6 +130,16 @@
 .social-icons svg:hover {
   color: orange;
 }
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: orange;       /* optional hover effect */
+  text-decoration: none;
+}
+
 
 /* ================== TABLET ================== */
 @media (max-width: 900px) {

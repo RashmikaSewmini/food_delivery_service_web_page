@@ -7,6 +7,10 @@ import Shop from "./pages/Shop";
 import Footer from "./components/Footer";
 import Common from "./pages/Common";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Help from "./pages/Help";
+import Services from "./pages/Services";
+import Privacy from "./pages/Privacy";
 
 
 function App() {
@@ -23,6 +27,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/notfound" element={<NotFound />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
 

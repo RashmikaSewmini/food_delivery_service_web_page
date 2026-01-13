@@ -1,7 +1,47 @@
 import "../styles/Contact.css";
 import MAP from "../assets/map.jpg";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Contact() {
+
+  const [formData, setFormData] = useState({
+    companyName: "",
+    businessNature: "",
+    address: "",
+    postcode: "",
+    contactName: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:5000/api/contact", formData);
+      alert("Message sent successfully");
+      setFormData({
+        companyName: "",
+        businessNature: "",
+        address: "",
+        postcode: "",
+        contactName: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      alert("Failed to send messages");
+    }
+  };
+
+
   return (
     <div className="contact-container">
       {/* LEFT FORM */}
@@ -9,49 +49,101 @@ export default function Contact() {
         <h1>Contact us</h1>
 
         <p className="contact-desc">
-          Need an experienced and skilled hand with custom IT projects?
+          Have a question, feedback, or need support with your food order?
           <br />
-          Fill out the form to get a free consultation.
+          Fill out the form and our team will get back to you as soon as possible.
         </p>
 
-        <form>
-          <input type="text" placeholder="Your Company Name" />
-          <input type="text" placeholder="Nature of Business" />
+        <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="companyName"
+              placeholder="Your Company Name"
+              value={formData.companyName}
+              onChange={handleChange}
+            />
 
-          <div className="row">
-            <input type="text" placeholder="Address" />
-            <input type="text" placeholder="Postcode" />
-          </div>
+            <input
+              type="text"
+              name="businessNature"
+              placeholder="Nature of Business"
+              value={formData.businessNature}
+              onChange={handleChange}
+            />
 
-          <input type="text" placeholder="Contact name" />
-          <input type="tel" placeholder="Contact Phone" />
-          <input type="email" placeholder="email@gmail.com" />
+            <div className="row">
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                value={formData.address}
+                onChange={handleChange}
+              />
 
-          <div className="checkbox-group">
-            <input type="checkbox" id="agree" />
-            <label htmlFor="agree">
-              I want to protect my data by signing an NDA
-            </label>
-          </div>
+              <input
+                type="text"
+                name="postcode"
+                placeholder="Postcode"
+                value={formData.postcode}
+                onChange={handleChange}
+              />
+            </div>
 
-          <button type="submit" id="submit-btn">Submit</button>
-        </form>
+            <input
+              type="text"
+              name="contactName"
+              placeholder="Contact name"
+              value={formData.contactName}
+              onChange={handleChange}
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Contact Phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="email@gmail.com"
+              value={formData.email}
+              onChange={handleChange}
+            />
+
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
+
+            <button type="submit" id="submit-btn">Send Message</button>
+          </form>
+
       </div>
 
       {/* RIGHT INFO */}
       <div className="contact-info">
         <h3>Offices</h3>
-
-        <p>No:xxxx,xxxx,xxxxx.</p>
+        <p>No 45, Galle Road, Colombo 03, Sri Lanka</p>
 
         <div className="office">
-          <strong>XXXXXXXX</strong>
-          <p>xxxxx xxxxx xxxxx</p>
+          <strong>Colombo Office</strong>
+          <br/>
+          <span>+94 11 234 5678</span>
+          <br/>
+          <span>support@foodgo.lk</span>
         </div>
 
         <div className="office">
-          <strong>XXXXXXXX</strong>
-          <p>xxxx xxx xxxxx xxxxx</p>
+          <strong>Kandy Office</strong>
+          <br/>
+          <span>+94 81 223 4455</span>
+          <br/>
+          <span>kandy@foodgo.lk</span>
         </div>
 
         <div className="map">
