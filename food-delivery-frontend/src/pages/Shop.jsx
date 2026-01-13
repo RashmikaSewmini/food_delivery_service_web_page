@@ -28,11 +28,11 @@ export default function Shop() {
       {/* LEFT SIDE */}
       <div className="image-section">
               <br/>
+      {/* <br/>
       <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
+      <br/> */}
         <h1>Today’s Trending Food</h1>
         <p className="subtitle">People loves it most the past week...</p>
 
@@ -64,23 +64,17 @@ export default function Shop() {
 
       {/* RIGHT SIDE */}
       <div className="details-section">
-              <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-            <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+        {/* <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/> */}
         <h2>Mango Smoothie</h2>
         <h3 className="price">Rs.500</h3>
 

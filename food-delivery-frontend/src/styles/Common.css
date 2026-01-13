@@ -2,6 +2,7 @@
   position: relative;
   height: 100vh;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 80px;
   overflow: hidden;
@@ -26,7 +27,7 @@
 
 /* LEFT TEXT */
 .hero-text {
-  width: 40%;
+  min-width: 200px;
   z-index: 2;
 }
 
@@ -166,3 +167,92 @@
     transform: rotate(360deg) translate(170px) rotate(-360deg);
   }
 }
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-text h1.title {
+    font-size: 56px;
+  }
+  .hero-text h2 {
+    font-size: 32px;
+  }
+  .main-image {
+    width: 180px;
+    height: 180px;
+  }
+  .orbit-image {
+    width: 50px;
+    height: 50px;
+  }
+  .top-right-curve {
+    width: 500px;
+    height: 500px;
+    top: -250px;
+    right: -120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 70px 20px;
+    height: auto;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .hero-text h1.title {
+    font-size: 42px;
+  }
+  .hero-text h2 {
+    font-size: 24px;
+  }
+  .hero-text p {
+    max-width: 100%;
+  }
+
+  .hero-images {
+    
+    width: 100%;
+    justify-content: center;
+  }
+
+  .image-orbit {
+    width: 250px;
+    height: 250px;
+  }
+
+  .main-image {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .orbit-image {
+    margin-top: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .top-right-curve {
+    width: 400px;
+    height: 400px;
+    top: -200px;
+    right: -100px;
+  }
+
+  .arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  .arrow svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+

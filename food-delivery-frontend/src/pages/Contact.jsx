@@ -6,9 +6,6 @@ export default function Contact() {
     <div className="contact-container">
       {/* LEFT FORM */}
       <div className="contact-form">
-        <br/>
-        <br/>
-        <br/>
         <h1>Contact us</h1>
 
         <p className="contact-desc">
@@ -43,12 +40,6 @@ export default function Contact() {
 
       {/* RIGHT INFO */}
       <div className="contact-info">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         <h3>Offices</h3>
 
         <p>No:xxxx,xxxx,xxxxx.</p>

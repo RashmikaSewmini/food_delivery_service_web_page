@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: transparent;
 }
 
 .App-link {
@@ -40,3 +40,16 @@
     transform: rotate(360deg);
   }
 }
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .content {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 10px 15px;
+  }
+}
+

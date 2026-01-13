@@ -1,15 +1,16 @@
 .food-container {
   display: flex;
-  padding: 40px;
+  padding: 60px 40px;
   gap: 50px;
   min-height: 100vh;
   background: linear-gradient(to bottom, #fff7e6, #ffb347);
   font-family: Arial, sans-serif;
+  flex-wrap: wrap;
 }
 
 /* LEFT */
 .image-section {
-  padding-left: 90px;
+  padding-left: 30px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,7 @@
 }
 
 .image-section h1 {
+  margin-top: 50px;
   font-size: 36px;
   margin-bottom: 5px;
 }
@@ -86,7 +88,9 @@
 }
 
 .details-section h2 {
+  margin-top: 240px;
   font-size: 34px;
+  justify-content: center;
 }
 
 .price {
@@ -143,4 +147,62 @@
 
 .cart {
   background: #ffb347;
+}
+
+/* ================== TABLET ================== */
+@media (max-width: 900px) {
+  .food-container {
+    padding: 30px 40px;
+    gap: 30px;
+  }
+
+  .image-section h1 {
+    font-size: 32px;
+  }
+
+  .details-section h2 {
+    font-size: 28px;
+    
+  }
+
+  .price {
+    font-size: 28px;
+  }
+}
+
+/* ================== MOBILE ================== */
+@media (max-width: 600px) {
+  .food-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-section,
+  .details-section {
+    width: 100%;
+  }
+
+  .details-section h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    
+  }
+
+  .image-box img {
+    max-width: 100%;
+  }
+
+  .quantity-box button,
+  .action-buttons button {
+    width: 100%;
+  }
+
+  .arrow {
+    font-size: 22px;
+    padding: 8px 10px;
+  }
+
+  .thumbnail-row img {
+    width: 60px;
+  }
 }

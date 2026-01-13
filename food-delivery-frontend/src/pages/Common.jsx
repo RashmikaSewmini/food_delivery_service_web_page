@@ -9,7 +9,7 @@ import Pizza from "../assets/pizza.jpg";
 function Common() {
   const images = [Mango, Mango2, Pizza,Mango];
   const colors = ["linear-gradient(to bottom,white, #df45d7, #1a1a1a)","linear-gradient(to bottom,white, #0a721dff, #1a1a1a)", "linear-gradient(to bottom,white, #914108ff, #1a1a1a)", "linear-gradient(to bottom,white, #947808ff, #1a1a1a)"];
-  const titleColors = ["#b00122ff", "#0aff72", "#eca979ff", "#7b6304ff"];
+  const titleColors = ["#b00122ff", "#0aff72", "#eca979ff", "rgb(238, 197, 35)"];
   const arrowColors = ["rgba(235, 50, 201, 0.9)", "rgba(10, 114, 36, 0.9)", "rgba(145, 65, 8, 0.9)", "rgba(148, 120, 8, 0.9)"];
   const curveColors = [
     "linear-gradient(to bottom,#ee95cd,#ee95cd, black)",

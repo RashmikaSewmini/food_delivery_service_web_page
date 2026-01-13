@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
 import Footer from "./components/Footer";
 import Common from "./pages/Common";
+import NotFound from "./pages/NotFound";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/notfound" element={<NotFound />} />
           </Routes>
         </main>
 

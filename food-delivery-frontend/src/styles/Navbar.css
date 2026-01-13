@@ -1,17 +1,18 @@
 .navbar {
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0px 0px 90px;
+  padding: 10px 10px 10px 40px;
   background: transparent;
   position: absolute;
-  width: 1433px;
+  width: 100%;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .logo a {
-  font-size: 35px;
+  font-size: 33px;
   font-weight: 648;
   color: rgb(9, 7, 7);
   text-decoration: none;
@@ -34,6 +35,13 @@
   color: orange;
 }
 
+/* Hamburger icon hidden in desktop */
+.hamburger {
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 /* Search bar container */
 .search-container {
   display: flex;
@@ -49,7 +57,7 @@
 .search-icon {
   color: #ddd;
   font-size: 16px;
-  margin-right: 8px;
+  margin-right: 2px;
 }
 
 /* Search input */
@@ -57,7 +65,7 @@
   border: none;
   background: transparent;
   outline: none;
-  color: white;
+  color: rgb(7, 7, 7);
   flex: 1;
   font-size: 15px;
 }
@@ -85,4 +93,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ========== MOBILE VIEW ========== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* show hamburger */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: linear-gradient(to bottom, #9b6b30, #fcfafa,#9b6b30);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 30px 0 0 0px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .search-container {
+    display: none; /* optional: hide search in very small screens */
+  }
 }
