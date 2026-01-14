@@ -10,6 +10,10 @@ import cake from "../assets/chesse.jpg";
 import pancake from "../assets/berry.jpg";
 import mango from "../assets/mango.jpg";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 
 const menuItems = [
@@ -88,6 +92,10 @@ function Menu() {
     }, {})
   );
 
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+
   const handleAdd = (id) => {
     setCart({ ...cart, [id]: cart[id] + 1 });
   };
@@ -97,6 +105,12 @@ function Menu() {
   };
 
   const handlePlaceOrder = async () => {
+    if (!user) {
+      alert("Please login first");
+      navigate("/login");
+      return;
+    }
+
     const orderItems = menuItems
       .filter((item) => cart[item.id] > 0)
       .map((item) => ({
@@ -106,26 +120,32 @@ function Menu() {
       }));
 
     if (orderItems.length === 0) {
-      alert("Please add items to cart!");
+      alert("Cart is empty");
       return;
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/orders", {
-        items: orderItems,
-        total: orderItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        ),
-      });
+      await axios.post(
+        "http://localhost:5000/api/orders",
+        {
+          items: orderItems,
+          total: orderItems.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          ),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
 
       alert("Order placed successfully");
-      setCart({});
-    } catch (error) {
-      alert("Order failed");
-    }
-  };
-
+      } catch (error) {
+        alert("Order failed");
+      }
+    };
 
   return (
     <div className="menu-page">
@@ -145,11 +165,11 @@ function Menu() {
               <p className="description">{item.description}</p>
               {item.discount ? (
                 <p className="price">
-                  <span className="old-price">৳{item.price}</span>{" "}
-                  <span className="discounted-price">৳{discountedPrice}</span>
+                  <span className="old-price">RS.{item.price}</span>{" "}
+                  <span className="discounted-price">RS.{discountedPrice}</span>
                 </p>
               ) : (
-                <p className="price">৳{item.price}</p>
+                <p className="price">RS.{item.price}</p>
               )}
               <div className="cart-actions">
                 {cart[item.id] === 0 ? (

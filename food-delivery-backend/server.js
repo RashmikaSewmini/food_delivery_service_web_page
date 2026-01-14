@@ -37,3 +37,11 @@ app.use("/api/orders", orderRoutes);
 
 const contactRoutes = require("./routes/contactRoutes");
 app.use("/api/contact", contactRoutes);
+
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+const ratingRoutes = require("./routes/ratingRoutes");
+
+app.use("/api/ratings", ratingRoutes);
+

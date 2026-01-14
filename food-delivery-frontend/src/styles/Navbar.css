@@ -70,29 +70,51 @@
   font-size: 15px;
 }
 
-/* Cart icon */
-.cart-icon {
-  position: relative;
-  margin-left: 12px;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* Notification badge */
-.cart-badge {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  background: red;
-  color: white;
-  font-size: 11px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+.auth-section {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
+  margin-left: 15px;
+}
+
+
+
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: orange;
+  color: black;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #ff9f1a;
+}
+
+.logout-btn {
+  padding: 8px 14px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #e60000;
+}
+
+.username {
+  color: rgb(17, 16, 16);
+  font-weight: bold;
 }
 
 /* ========== MOBILE VIEW ========== */
@@ -105,7 +127,7 @@
     position: absolute;
     top: 60px;
     left: 0;
-    background: linear-gradient(to bottom, #9b6b30, #fcfafa,#9b6b30);
+    background: linear-gradient(to bottom, #9b6b30,#9b6b30);
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -118,6 +140,7 @@
   }
 
   .search-container {
-    display: none; /* optional: hide search in very small screens */
+    display: none;
   }
 }
+

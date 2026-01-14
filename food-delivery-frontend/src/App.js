@@ -11,13 +11,17 @@ import About from "./pages/About";
 import Help from "./pages/Help";
 import Services from "./pages/Services";
 import Privacy from "./pages/Privacy";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app-layout">
-        <Navbar />
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="app-layout">
+          <Navbar />
         
         <main className="content">
           <Routes>
@@ -31,12 +35,15 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/services" element={<Services />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </main>
 
         <Footer />
       </div>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 

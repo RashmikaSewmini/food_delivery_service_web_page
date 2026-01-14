@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useState, useContext} from "react";
 import "../styles/Shop.css";
 import Mango from "../assets/mango.jpg";
 import Mango2 from "../assets/mango2.jpg";
 import Mango3 from "../assets/mango3.jpg";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Shop() {
+
+  const { user } = useContext(AuthContext);
+  const [reviewCount, setReviewCount] = useState(1256);
+  const [avgRating, setAvgRating] = useState(5.0);
+  const navigate = useNavigate();
+
+
   const [quantity, setQuantity] = useState(2);
 
   /* IMAGE SLIDER STATE */
-  const images = [Mango, Mango2, Mango];
+  const images = [Mango, Mango2, Mango3];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const quantities = [0.5, 1, 2, 5, 10, 20];
+  const quantities = [0, 1, 2, 3, 4, 5];
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -23,17 +34,48 @@ export default function Shop() {
     );
   };
 
+  const handleRating = async () => {
+    if (!user) {
+      alert("Please login to rate");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/ratings",
+        {
+          product: "Mango Smoothie",
+          value: quantity
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`
+          }
+        }
+      );
+
+      setReviewCount(res.data.totalUsers);
+      setAvgRating(res.data.avgRating);
+
+      alert("Thanks for rating");
+    } catch (error) {
+      console.error(error);
+      alert("Rating failed");
+    }
+  };
+  const goToMenu = () => {
+    navigate("/menu");
+  };
+
+
+
   return (
     <div className="food-container">
       {/* LEFT SIDE */}
       <div className="image-section">
               <br/>
-      {/* <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/> */}
-        <h1>Today’s Trending Food</h1>
+
+        <h1>Today's Trending Food</h1>
         <p className="subtitle">People loves it most the past week...</p>
 
         {/* MAIN IMAGE */}
@@ -64,22 +106,12 @@ export default function Shop() {
 
       {/* RIGHT SIDE */}
       <div className="details-section">
-        {/* <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/> */}
         <h2>Mango Smoothie</h2>
         <h3 className="price">Rs.500</h3>
 
         <div className="rating">
-          {"★★★★★"} <span>5.0 out of (1256) <a href="#">Reviews</a></span>
+          {"★★★★★"} <span>{avgRating} out of ({reviewCount}) Reviews</span>
+
         </div>
 
         <h4>Select Quantity</h4>
@@ -97,8 +129,8 @@ export default function Shop() {
         </div>
 
         <div className="action-buttons">
-          <button className="wishlist">❤️</button>
-          <button className="cart">🛒</button>
+          <button className="wishlist" onClick={handleRating}>❤️</button>
+          <button className="cart" onClick={goToMenu}>🛒</button>
         </div>
       </div>
     </div>
